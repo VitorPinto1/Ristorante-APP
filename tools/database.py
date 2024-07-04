@@ -59,4 +59,18 @@ class DatabaseService:
         except Error as err:
             print(f"Error: {err}")
             return []
+    
+    def update_reservation(self, reservation_id, date, time, total_guests):
+        try:
+            with self._get_connection() as conn:
+                with conn.cursor() as cursor:
+                    query = """
+                        UPDATE reservation
+                        SET day = %s, time = %s, totalPerson = %s
+                        WHERE id = %s
+                    """
+                    cursor.execute(query, (date, time, total_guests, reservation_id))
+                    conn.commit()
+        except Error as err:
+            print(f"Error: {err}")
 

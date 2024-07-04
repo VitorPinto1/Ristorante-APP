@@ -8,6 +8,9 @@ class Reservation(Screen):
         super().__init__(**kwargs)
         self.user_id = None  
 
+    def on_enter(self, *args):
+        self.load_reservations()
+
     def set_user_id(self, user_id):
         self.user_id = user_id
         self.load_reservations()
@@ -22,10 +25,31 @@ class Reservation(Screen):
             for reservation in reservations:
                 self.ids.reservation_list.add_widget(
                     ThreeLineListItem(
-                        text=f"Reservation at {reservation[1]}",  
-                        secondary_text=f"Date: {reservation[2]}",
-                        tertiary_text=f"Time: {reservation[3]}"
+                        text=f"Reservation name:  {reservation[1]}",  
+                        secondary_text=f"Date: {reservation[3]}",
+                        tertiary_text=f"Time: {reservation[4]}",
+                        on_release=lambda x, reservation_info=reservation: self.reservation_details(reservation_info)
                     )
                 )
         else:
             print("Error: user_id is not set")
+
+    def reservation_details(self, reservation_info):
+        reservation_detail_screen = self.manager.get_screen('MyReservation')
+        reservation_detail_screen.reservation_data = reservation_info
+        
+        details = [
+            f"Reservation number: {reservation_info[0]}",
+            f"Name: {reservation_info[1]}",
+            f"Date: {reservation_info[3]}",
+            f"Time: {reservation_info[4]}",
+            f"Total guests: {reservation_info[2]}"
+           
+        ]
+
+        detail_text = "\n".join(filter(None, details))
+
+        reservation_detail_screen.ids.detail_label.markup = True
+        reservation_detail_screen.ids.detail_label.text = detail_text
+
+        self.manager.current = 'MyReservation'
