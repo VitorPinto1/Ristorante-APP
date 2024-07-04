@@ -3,7 +3,7 @@
 ScreenManager:
     canvas.before:
         Color:
-            rgba: 0, 0, 0, 1
+            rgba: 244/255, 241/255, 228/255, 1
         Rectangle:
             pos: self.pos
             size: self.size
@@ -18,7 +18,7 @@ ScreenManager:
     FloatLayout:
         canvas.before:
             Color:
-                rgba: 0, 0, 0, 1  
+                rgba: 244/255, 241/255, 228/255, 1
             Rectangle:
                 pos: self.pos
                 size: self.size
@@ -36,16 +36,6 @@ ScreenManager:
             padding: dp(20)
             spacing: dp(20)
             radius: [25, 25, 25, 25]
-            canvas.before:
-                Color:
-                    rgba: 0.435, 0.259, 0.757, 1
-                BoxShadow:
-                    pos: self.pos
-                    size: self.size
-                    offset: 0, 0
-                    spread_radius: -20, -20
-                    border_radius: 10, 10, 10, 10
-                    blur_radius: 80
             MDLabel:
                 text: 'Login'
                 theme_text_color: 'Primary'
@@ -74,7 +64,9 @@ ScreenManager:
                 size_hint_y: None
                 height: dp(50)
                 pos_hint: {"center_x": .5}
-                md_bg_color: 0.435, 0.259, 0.757, 1
+                md_bg_color: 0.875, 0.788, 0.612, 1
+                on_press: self.md_bg_color = (0.7, 0.6, 0.4, 1)
+                on_release: self.md_bg_color = (0.875, 0.788, 0.612, 1)
 
 
 <MyReservation>:
@@ -82,7 +74,7 @@ ScreenManager:
     FloatLayout:
         canvas.before:
             Color:
-                rgba: 0, 0, 0, 1  
+                rgba: 244/255, 241/255, 228/255, 1
             Rectangle:
                 pos: self.pos
                 size: self.size
@@ -94,7 +86,7 @@ ScreenManager:
         MDLabel:
             text: 'Reservation details'
             theme_text_color: 'Custom'
-            text_color: 1, 1, 1, 1
+            text_color: 0, 0, 0, 1
             font_style: 'H4'
             size_hint_y: None
             height: self.texture_size[1]
@@ -109,16 +101,6 @@ ScreenManager:
             padding: "8dp"
             spacing: "10dp"
             radius: [25, 25, 25, 25]
-            canvas.before:
-                Color:
-                    rgba: 0.435, 0.259, 0.757, 1
-                BoxShadow:
-                    pos: self.pos
-                    size: self.size
-                    offset: 0, 0
-                    spread_radius: -20, -20
-                    border_radius: 10, 10, 10, 10
-                    blur_radius: 80
             MDLabel:
                 id: detail_label
                 text: ''
@@ -128,12 +110,14 @@ ScreenManager:
                 height: self.texture_size[1]
                 pos_hint: {"center_x": 0.5, "top": 0.98}
         MDRaisedButton:
-            text: 'Retourner'
+            text: 'Return'
             on_release: app.go_to_reservation()
             size_hint: None, None
             size: "200dp", "50dp"
             pos_hint: {"center_x": .5, "top": 0.1}
-            md_bg_color: 0.435, 0.259, 0.757, 1
+            md_bg_color: 0.875, 0.788, 0.612, 1
+            on_press: self.md_bg_color = (0.7, 0.6, 0.4, 1)
+            on_release: self.md_bg_color = (0.875, 0.788, 0.612, 1)
         
         MDRaisedButton:
             text: 'Modification'
@@ -141,8 +125,9 @@ ScreenManager:
             size_hint: None, None
             size: "200dp", "50dp"
             pos_hint: {"center_x": .2, "top": 0.1}
-            md_bg_color: 0.435, 0.259, 0.757, 1
-
+            md_bg_color: 1.0, 0.6, 0.0, 1
+            on_press: self.md_bg_color = (0.8, 0.4, 0.0, 1)
+            on_release: self.md_bg_color = (1.0, 0.6, 0.0, 1)
 
 
 
@@ -151,7 +136,7 @@ ScreenManager:
     FloatLayout:
         canvas.before:
             Color:
-                rgba: 0, 0, 0, 1  
+                rgba: 244/255, 241/255, 228/255, 1
             Rectangle:
                 pos: self.pos
                 size: self.size
@@ -168,7 +153,7 @@ ScreenManager:
             MDLabel:
                 text: 'Reservations'
                 theme_text_color: 'Custom'
-                text_color: 1, 1, 1, 1
+                text_color: 0, 0, 0, 1
                 font_style: 'H4'
                 size_hint_y: None
                 height: self.texture_size[1]
@@ -182,16 +167,6 @@ ScreenManager:
                 spacing: dp(10)
                 elevation: 1
                 radius: [25, 25, 25, 25]
-                canvas.before:
-                    Color:
-                        rgba: 0.435, 0.259, 0.757, 1
-                    BoxShadow:
-                        pos: self.pos
-                        size: self.size
-                        offset: 0, 0
-                        spread_radius: -20, -20
-                        border_radius: 10, 10, 10, 10
-                        blur_radius: 80
                 ScrollView:
                     size_hint_y: None
                     height: dp(400)
@@ -204,14 +179,16 @@ ScreenManager:
                 size_hint_y: None
                 height: dp(50)
                 pos_hint: {"center_x": .5}
-                md_bg_color: 0.435, 0.259, 0.757, 1
+                md_bg_color: 0.875, 0.788, 0.612, 1
+                on_press: self.md_bg_color = (0.7, 0.6, 0.4, 1)
+                on_release: self.md_bg_color = (0.875, 0.788, 0.612, 1)
 
 <ReservationModification>:
     name: 'ReservationModification'
     FloatLayout:
         canvas.before:
             Color:
-                rgba: 0, 0, 0, 1  
+                rgba: 244/255, 241/255, 228/255, 1
             Rectangle:
                 pos: self.pos
                 size: self.size
@@ -223,7 +200,7 @@ ScreenManager:
         MDLabel:
             text: 'Reservation modification'
             theme_text_color: 'Custom'
-            text_color: 1, 1, 1, 1
+            text_color: 0, 0, 0, 1
             font_style: 'H4'
             size_hint_y: None
             height: self.texture_size[1]
@@ -238,16 +215,6 @@ ScreenManager:
             padding: "8dp"
             spacing: "10dp"
             radius: [25, 25, 25, 25]
-            canvas.before:
-                Color:
-                    rgba: 0.435, 0.259, 0.757, 1
-                BoxShadow:
-                    pos: self.pos
-                    size: self.size
-                    offset: 0, 0
-                    spread_radius: -20, -20
-                    border_radius: 10, 10, 10, 10
-                    blur_radius: 80
             MDTextField:
                 id: date_field
                 hint_text: 'Date'
@@ -274,11 +241,15 @@ ScreenManager:
             size_hint: None, None
             size: "200dp", "50dp"
             pos_hint: {"center_x": .5, "top": 0.2}
-            md_bg_color: 0.435, 0.259, 0.757, 1
+            md_bg_color: 1.0, 0.6, 0.0, 1
+            on_press: self.md_bg_color = (0.8, 0.4, 0.0, 1)
+            on_release: self.md_bg_color = (1.0, 0.6, 0.0, 1)
         MDRaisedButton:
             text: 'Return'
             on_release: app.go_to_reservation()
             size_hint: None, None
             size: "200dp", "50dp"
             pos_hint: {"center_x": .5, "top": 0.1}
-            md_bg_color: 0.435, 0.259, 0.757, 1
+            md_bg_color: 0.875, 0.788, 0.612, 1
+            on_press: self.md_bg_color = (0.7, 0.6, 0.4, 1)
+            on_release: self.md_bg_color = (0.875, 0.788, 0.612, 1)

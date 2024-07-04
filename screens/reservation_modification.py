@@ -14,7 +14,7 @@ class ReservationModification(Screen):
         self.dialog = None
 
     def on_enter(self, *args):
-        print("Entering screen with reservation_info:", self.reservation_info)
+     
 
         if self.reservation_info:
             self.ids.date_field.text = str(self.reservation_info[3])
@@ -22,7 +22,7 @@ class ReservationModification(Screen):
             self.ids.total_guests_field.text = str(self.reservation_info[2])
         
     def set_reservation_info(self, reservation_info):
-        print("Setting reservation_info:", reservation_info)
+     
         self.reservation_info = reservation_info
 
     def save_modification(self):
@@ -85,7 +85,7 @@ class ReservationModification(Screen):
             self.show_error_dialog("Invalid time selected: Please select a time between 12:00 and 00:00")
 
     def on_cancel_time(self, instance, value):
-        print("Time picker cancelled")
+        self.show_error_dialog("Time picker cancelled")
 
     def show_error_dialog(self, error_message):
         if not self.dialog:
