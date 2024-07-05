@@ -60,6 +60,11 @@ class ReservationModification(Screen):
         date_picker = MDDatePicker(
             min_date=datetime.now().date(),
             max_date=(datetime.now() + timedelta(days=365)).date(),
+            primary_color=MDApp.get_running_app().theme_cls.bg_light,
+            text_toolbar_color=MDApp.get_running_app().theme_cls.text_color,
+            text_color=MDApp.get_running_app().theme_cls.text_color,
+            selector_color=MDApp.get_running_app().theme_cls.accent_light,
+            background_color=MDApp.get_running_app().theme_cls.bg_light
         )
         date_picker.bind(on_save=self.on_save_date, on_cancel=self.on_cancel_date)
         date_picker.open()
@@ -74,7 +79,9 @@ class ReservationModification(Screen):
         self.show_error_dialog("Date picker cancelled")
     
     def show_time_picker(self):
-        time_picker = MDTimePicker()
+        time_picker = MDTimePicker(
+            
+        )
         time_picker.bind(on_save=self.on_save_time, on_cancel=self.on_cancel_time)
         time_picker.open()
 
